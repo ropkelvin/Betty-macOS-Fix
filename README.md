@@ -34,14 +34,14 @@ betty-doc file1 [file2 ...]
 
 To run the Betty linter using a simple `betty <filename>` command:
 
-1. Clone the Betty repository:
+1. Clone the Betty macOS fix repository:
    ```sh
-   git clone https://github.com/holbertonschool/Betty.git
+   https://github.com/ropkelvin/Betty-macOS-Fix.git
    ```
 
 2. Navigate to the Betty directory:
    ```sh
-   cd Betty
+   cd Betty-macOS-Fix
    ```
 
 3. Install the linter:
