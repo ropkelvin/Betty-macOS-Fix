@@ -2,65 +2,91 @@
 
 [![Build Status](https://travis-ci.org/holbertonschool/Betty.svg?branch=master)](https://travis-ci.org/holbertonschool/Betty)
 
-### Installation
+## Installation
 
-Run the script `install.sh` with **sudo privileges** to install `betty-style` and `betty-doc` on your computer, along with the  following manuals:
+Run the script `install.sh` with **sudo privileges** to install `betty-style` and `betty-doc` on your computer. The following manuals will also be installed:
 
- * _betty(1)_
- * _betty-style(1)_
- * _betty-doc(1)_
+- `betty(1)`
+- `betty-style(1)`
+- `betty-doc(1)`
 
-### Documentation
+## Documentation
 
-Please visit the [Betty Wiki](https://github.com/holbertonschool/Betty/wiki) for the full specifications of Betty coding and documentation styles.
+For the full specifications of Betty coding and documentation styles, please visit the [Betty Wiki](https://github.com/holbertonschool/Betty/wiki).
 
-You'll also find some references and some tools for common text editors such as Emacs and Atom.
+You'll also find references and tools for common text editors such as Emacs and Atom.
 
-### Usage
+## Usage
 
-Run the following command to check if your code/doc fits the Betty Style (mostly inspired from the Linux Kernel style):
+To check if your code or documentation follows the Betty style (which is mostly inspired by the Linux Kernel style), run the following commands:
 
-```ShellSession
-betty-style file1 [file2 [file3 [...]]]
+```sh
+betty-style file1 [file2 ...]
 ```
 
-```ShellSession
-betty-doc file1 [file2 [file3 [...]]]
+```sh
+betty-doc file1 [file2 ...]
 ```
 
-#More Info
-Betty linter
-To run the Betty linter just with command betty <filename>:
+## More Info
 
-Go to the Betty repository
-Clone the repo to your local machine
-cd into the Betty directory
-Install the linter with sudo ./install.sh
-emacs or vi a new file called betty, and copy the script below:
+### Running the Betty Linter
 
+To run the Betty linter using a simple `betty <filename>` command:
 
-#!/bin/bash
-# Simply a wrapper script to keep you from having to use betty-style
-# and betty-doc separately on every item.
-# Originally by Tim Britton (@wintermanc3r), multiargument added by
-# Larry Madeo (@hillmonkey)
+1. Clone the Betty repository:
+   ```sh
+   git clone https://github.com/holbertonschool/Betty.git
+   ```
 
-BIN_PATH="/usr/local/bin"
-BETTY_STYLE="betty-style"
-BETTY_DOC="betty-doc"
+2. Navigate to the Betty directory:
+   ```sh
+   cd Betty
+   ```
 
-if [ "$#" = "0" ]; then
-    echo "No arguments passed."
-    exit 1
-fi
+3. Install the linter:
+   ```sh
+   sudo ./install.sh
+   ```
 
-for argument in "$@" ; do
-    echo -e "\n========== $argument =========="
-    ${BIN_PATH}/${BETTY_STYLE} "$argument"
-    ${BIN_PATH}/${BETTY_DOC} "$argument"
-done
+4. Create a new script file named `betty` and copy the following script into it:
 
+   ```sh
+   #!/bin/bash
+   # Wrapper script to run betty-style and betty-doc on multiple files.
+   # Originally by Tim Britton (@wintermanc3r), multi-argument support by
+   # Larry Madeo (@hillmonkey)
 
-Once saved, exit file and change permissions to apply to all users with chmod a+x betty
-Move the betty file into /bin/ directory or somewhere else in your $PATH with sudo mv betty /bin/
-You can now type betty <filename> to run the Betty linter!
+   BIN_PATH="/usr/local/bin"
+   BETTY_STYLE="betty-style"
+   BETTY_DOC="betty-doc"
+
+   if [ "$#" = "0" ]; then
+       echo "No arguments passed."
+       exit 1
+   fi
+
+   for argument in "$@"; do
+       echo -e "\n========== $argument =========="
+       ${BIN_PATH}/${BETTY_STYLE} "$argument"
+       ${BIN_PATH}/${BETTY_DOC} "$argument"
+   done
+   ```
+
+5. Save and exit the file.
+6. Make the script executable:
+   ```sh
+   chmod a+x betty
+   ```
+7. Move the script to a directory in your `$PATH`:
+   ```sh
+   sudo mv betty /usr/local/bin/
+   ```
+
+Now, you can simply run:
+
+```sh
+betty <filename>
+```
+
+to check your code using the Betty linter!
