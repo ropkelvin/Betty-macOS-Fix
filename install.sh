@@ -40,6 +40,6 @@ cp "man/${BETTY_DOC}.1" "${MAN_PATH}"
 
 echo -e "Updating man database.."
 
-mandb
+man -w
 
 echo -e "All set."
